@@ -23,6 +23,8 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
         android:id="@+id/editTextText2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -90,7 +92,7 @@
         android:minWidth="48dp"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.936"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/radioButton3"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
@@ -107,7 +109,8 @@
         app:layout_constraintTop_toBottomOf="@+id/radioButton3" />
 
     <Button
-        android:shadowRadius="4dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -119,7 +122,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch1"
         app:layout_constraintVertical_bias="0.0"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText,VisualLintButtonSize" />
+
 
     <TextView
         android:id="@+id/textView5"
