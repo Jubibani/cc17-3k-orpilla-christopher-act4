@@ -1,5 +1,6 @@
 package com.example.tipcalculator
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -7,11 +8,13 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Switch
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         val switch1 = findViewById<Switch>(R.id.switch1)
 
         val calculate = findViewById<Button>(R.id.button)
+
+        val tipResult = findViewById<TextView>(R.id.textView5)
 
         calculate.setOnClickListener {
             //we get the user input from the edit Text by assigning it to a new variable
@@ -56,6 +61,7 @@ class MainActivity : AppCompatActivity() {
 
                 // Show the result using a Toast
                 Toast.makeText(this, "Calculated Tip: $calculatedTip", Toast.LENGTH_LONG).show()
+                tipResult.text = "Tip Amount: $calculatedTip"
             } else {
                 // Handle invalid input
                 Log.d("MyApp", "Invalid or empty tip amount")
