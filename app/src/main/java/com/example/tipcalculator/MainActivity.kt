@@ -14,7 +14,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         val radioButton2 = findViewById<RadioButton>(R.id.radioButton2)
         val radioButton3 = findViewById<RadioButton>(R.id.radioButton3)
 
-        val switch1 = findViewById<Switch>(R.id.switch1)
+        val switchButton = findViewById<Switch>(R.id.switch1)
 
         val calculate = findViewById<Button>(R.id.button)
 
@@ -54,17 +54,18 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 // Calculate the tip
-                val calculatedTip = tipInput * servicePercentage
+                var calculatedTip = tipInput * servicePercentage
 
-                // Log the result for now
-                Log.d("MyApp", "Calculated Tip: $calculatedTip")
-
-                // Show the result using a Toast
-                Toast.makeText(this, "Calculated Tip: $calculatedTip", Toast.LENGTH_LONG).show()
                 tipResult.text = "Tip Amount: $calculatedTip"
+
+                if (switchButton.isChecked) {
+                    calculatedTip = kotlin.math.ceil(calculatedTip)
+                    tipResult.text = "Tip Amount: $calculatedTip"
+                }
             } else {
+                tipResult.text = "Tip Amount: "
                 // Handle invalid input
-                Log.d("MyApp", "Invalid or empty tip amount")
+                Toast.makeText(this, "Invalid or empty tip amount", Toast.LENGTH_SHORT).show()
             }
 
         }
